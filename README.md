@@ -32,6 +32,8 @@ A complete Security Information and Event Management (SIEM) lab that combines th
 | UFW | Uncomplicated Firewall for Linux packet-filtering |
 | Nginx | Web Server, High performance, reverse proxy, attack surface |
 
+---
+
 ## Homelab Architecture
 
 ```mermaid
@@ -60,8 +62,10 @@ graph TB
     E -->|Visualize| F
     D -->|Trigger| H
     G -->|Auth| F
+```
 
-## Data Flow
+### Data Flow
+```mermaid
 flowchart LR
     A[⚡ Attack Traffic]:::input
     B[📝 Log Collection]:::process
@@ -83,8 +87,17 @@ flowchart LR
     classDef safe fill:#00F5A0,stroke:#00C853,stroke-width:4px,color:#FFF
     classDef danger fill:#FF6B6B,stroke:#FF0000,stroke-width:4px,color:#FFF
     classDef alert fill:#FD79A8,stroke:#E84393,stroke-width:4px,color:#FFF
+```
+---
 
-## Project Structure
+## Quick Start
+Prerequisites
+Docker Engine 24.0+
+Docker Compose 2.20+
+Minimum 8GB RAM
+20GB free disk space
+
+### Project Structure
 SIEM_Active_Defense_Lab/
 ├── 📄 README.md                     # Comprehensive documentation
 ├── 🐳 docker-compose.yml            # Main Docker compose file
@@ -102,15 +115,8 @@ SIEM_Active_Defense_Lab/
 │   └── attack_simulation.sh         # Attack simulation script
 └── 📁 screenshots/                  # Evidence for documentation
     └── active_response_alert.png    # Active response screenshot
-
-## Quick Start
-Prerequisites
-Docker Engine 24.0+
-Docker Compose 2.20+
-Minimum 8GB RAM
-20GB free disk space
-
-## Installation
+    
+### Installation
 ```bash
 # Clone the repository
 git clone https://github.com/AljawharaK/SIEM_Active_Defense_Lab.git
@@ -126,11 +132,13 @@ docker compose up -d
 docker compose ps
 ```
 
-## Access Services
+### Access Services
 | Service | URL |
 |:-------:|:-----------:|
 | Wazuh Dashboard | https://localhost:443 |
 | Keycloak | http://localhost:8081 |
+
+---
 
 ## Attack-Simulation
 | Attack Type | Method |
