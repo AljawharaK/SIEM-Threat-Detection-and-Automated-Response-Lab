@@ -9,7 +9,7 @@
 
 ### *Threat Detection & Automated Defense*
 
-[Tools](#-tools) • [Quick Start](#-quick-start) • [Homelab Architecture](#-homelab-architecture) • [Attack-Simulation](#-attack-simulation)
+[Tools](#tools) • [Quick Start](#quick-start) • [Homelab Architecture](#homelab-architecture) • [Attack Simulation](#attack-simulation)
 
 ---
 
@@ -122,7 +122,7 @@ docker compose ps
 
 ---
 
-## Attack-Simulation
+## Attack Simulation
 
 ### Real-World Attack Scenarios with Automated Response
 
@@ -151,7 +151,7 @@ Wazuh monitored the website and logged alerts:
   <img src="screenshots/Wazuh_dashboard_threat_hunting_events.jpeg" width="400" />
   <img src="screenshots/Wazuh_dashboard_MITRE_ATT&CK.jpeg" width="400" />
   <img src="screenshots/Wazuh_dashboard_vuln.jpeg" width="400" />
-  <img src="screenshots/Wazuh_dashboard_active_response.jpeg.jpeg" width="400" />
+  <img src="screenshots/Wazuh_dashboard_active_response.jpeg" width="400" />
 </p> 
 
 ---
