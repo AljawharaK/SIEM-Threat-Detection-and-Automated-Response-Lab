@@ -1,7 +1,7 @@
 # SIEM-Active-Defense-Lab
 ![Wazuh](https://img.shields.io/badge/Wazuh-4.14.0-blue?style=for-the-badge&logo=wazuh&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-29.7.2-blue?style=for-the-badge&logo=docker&logoColor=white)
-![Keycloak](https://img.shields.io/badge/Keycloak-26.0.5-0-blue?style=for-the-badge&logo=keycloak&logoColor=white)
+![Keycloak](https://img.shields.io/badge/Keycloak-26.0.5-blue?style=for-the-badge&logo=keycloak&logoColor=white)
 ![UFW](https://img.shields.io/badge/UFW-0.36.2-blue?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Nginx](https://img.shields.io/badge/NGINX-1.28.3-blue?style=for-the-badge&logo=nginx&logoColor=white)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-26.04.1-blue?style=for-the-badge&logo=ubuntu&logoColor=white)
