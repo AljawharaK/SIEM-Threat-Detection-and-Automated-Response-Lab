@@ -1,5 +1,5 @@
-# SIEM-Active-Defense-Lab
-![Wazuh](https://img.shields.io/badge/Wazuh-4.14.0-blue?style=for-the-badge&logo=wazuh&logoColor=white)
+# SIEM Threat Detection & Automated Response Lab
+![Wazuh](https://img.shields.io/badge/Wazuh-4.14.7-blue?style=for-the-badge&logo=wazuh&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-29.7.2-blue?style=for-the-badge&logo=docker&logoColor=white)
 ![Keycloak](https://img.shields.io/badge/Keycloak-26.0.5-blue?style=for-the-badge&logo=keycloak&logoColor=white)
 ![UFW](https://img.shields.io/badge/UFW-0.36.2-blue?style=for-the-badge&logo=ubuntu&logoColor=white)
@@ -9,7 +9,7 @@
 
 ### *Threat Detection & Automated Defense*
 
-[Tools](#tools) • [Quick Start](#quick-start) • [Homelab Architecture](#homelab-architecture) • [Attack Simulation](#attack-simulation)
+[Tools](#tools) • [Quick Start](#quick-start) • [Homelab Architecture](#homelab-architecture) • [Attack Simulation](#attack-simulation) • [Wazuh SIEM Dashboard](#wazuh-siem-dashboard)
 
 ---
 
@@ -26,7 +26,7 @@ A complete Security Information and Event Management (SIEM) lab that combines th
 ## Tools
 | Tool | Description |
 |:-------:|:-----------:|
-| Wazuh | Open-source SIEM & XDR for comprehensive security monitoring |
+| Wazuh | SIEM/XDR platform for security monitoring, threat detection, vulnerability detection, and automated response |
 | Docker | Containerization and deployment |
 | Keycloak | IAM for Single-Sign-On and authentication |
 | UFW | Uncomplicated Firewall for Linux packet-filtering |
@@ -50,8 +50,8 @@ graph TB
     B[🌐 NGINX<br/>Web Server]:::web
     C[🛡️ Wazuh Agent<br/>Endpoint Security]:::siem
     D[📊 Wazuh Server<br/>SIEM Core]:::siem
-    E[🔍 Wazuh Indexer<br/>Elasticsearch]:::db
-    F[📈 Wazuh Dashboard<br/>Kibana]:::siem
+    E[🔍 Wazuh Indexer<br/>OpenSearch]:::db
+    F[📈 Wazuh Dashboard<br/>OpenSearch Dashboards]:::siem
     G[🔐 Keycloak<br/>Identity Management]:::auth
     H[🚨 Active Response<br/>Firewall Drop]:::response
 
@@ -63,47 +63,26 @@ graph TB
     D -->|Trigger| H
     G -->|Auth| F
 ```
-
-### Data Flow
-```mermaid
-flowchart LR
-    A[⚡ Attack Traffic]:::input
-    B[📝 Log Collection]:::process
-    C[🔍 Threat Detection]:::ai
-    D{Attack?}:::decision
-    E[📊 Dashboard Alert]:::safe
-    F[🚫 Firewall Block]:::danger
-    G[📧 Email Alert]:::alert
-    
-    A --> B --> C --> D
-    D -->|No| E
-    D -->|Yes| F
-    F --> G
-    
-    classDef input fill:#FF6B6B,stroke:#FF0000,stroke-width:4px,color:#FFF
-    classDef process fill:#4ECDC4,stroke:#00B894,stroke-width:4px,color:#FFF
-    classDef ai fill:#45B7D1,stroke:#2196F3,stroke-width:4px,color:#FFF
-    classDef decision fill:#A29BFE,stroke:#6C5CE7,stroke-width:4px,color:#FFF
-    classDef safe fill:#00F5A0,stroke:#00C853,stroke-width:4px,color:#FFF
-    classDef danger fill:#FF6B6B,stroke:#FF0000,stroke-width:4px,color:#FFF
-    classDef alert fill:#FD79A8,stroke:#E84393,stroke-width:4px,color:#FFF
-```
 ---
 
 ## Quick Start
-Prerequisites
-Docker Engine 24.0+
-Docker Compose 2.20+
-Minimum 8GB RAM
-20GB free disk space
+
+### Prerequisites
+- Ubuntu Linux VM
+- Docker Engine
+- Docker Compose v2
+- 8 GB RAM minimum for this lab configuration
+- 20 GB available disk space
 
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/AljawharaK/SIEM_Active_Defense_Lab.git
+git clone https://github.com/AljawharaK/SIEM-Threat-Detection-and-Automated-Response-Lab.git
 cd SIEM_Active_Defense_Lab
 
-# Update the IP address in config.yml to match your Ubuntu host IP
+# Review the Wazuh certificate configuration
+# Update config/certs.yml if your environment requires custom hostnames/IPs
+
 # Generate SSL certificates for secure communication
 docker compose -f generate-indexer-certs.yml run --rm generator
 
@@ -117,8 +96,8 @@ docker compose ps
 ### Access Services
 | Service | URL | Credentials |
 |:-------:|:-----------:|:-----------:|
-| Wazuh Dashboard | https://localhost:443 | admin / swordfish |
-| Keycloak | http://localhost:8081 | admin / swordfish |
+| Wazuh Dashboard | https://localhost:443 | Configure in `docker-compose.yml` |
+| Keycloak | http://localhost:8081 | Configure in `docker-compose.yml` |
 
 ---
 
@@ -158,7 +137,7 @@ Wazuh monitored the website and logged alerts:
 
 ## Security Hardening
 
-### Keycloak SSO
+### Keycloak IAM
 
 Keycloak is an open-source identity and access management (IAM) platform that enables developers and system administrators to oversee authentication, authorization, and user identity processes across different applications. By centralizing user login functionality and supporting integration with various identity providers, it streamlines and fortifies access to apps and services. In corporate settings, Keycloak is commonly adopted to enforce single sign-on (SSO), multi-factor authentication (MFA), and other security standards across a diverse range of systems.
 
@@ -176,7 +155,7 @@ Core Features of Keycloak
 
 ### UFW Uncomplicated Firewall
 
-UFW (Uncomplicated Firewall) is a user-friendly front-end for managing iptables firewall rules, designed to simplify the process of configuring network security on Linux systems.
+UFW (Uncomplicated Firewall) is a user-friendly front-end for managing iptables firewall rules, designed to simplify the process of configuring network security on Linux systems and Docker container traffic.
 
 Core Features of UFW
 
@@ -188,6 +167,8 @@ Core Features of UFW
 
 ```bash
 # Add these filters
+sudo ufw-docker install
+sudo systemctl restart ufw
 sudo ufw-docker allow single-node-wazuh.manager-1 1514/tcp
 sudo ufw-docker allow single-node-wazuh.manager-1 1515/tcp
 sudo ufw-docker allow single-node-wazuh.manager-1 55000/tcp
@@ -197,7 +178,7 @@ sudo ufw-docker allow single-node-wazuh.dashboard-1 443/tcp
 ```
 ---
 
-## Security Posture
+## Results
 
 The lab demonstrated a complete security operations workflow:
 - Detection: Wazuh agent monitors system and application logs
