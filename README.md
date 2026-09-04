@@ -97,31 +97,13 @@ Docker Compose 2.20+
 Minimum 8GB RAM
 20GB free disk space
 
-### Project Structure
-SIEM_Active_Defense_Lab/
-├── 📄 README.md                     # Comprehensive documentation
-├── 🐳 docker-compose.yml            # Main Docker compose file
-├── 🔐 generate-indexer-certs.yml    # Certificate generation compose
-├── 📁 config/                       # Configuration files
-│   ├── 📁 wazuh_indexer/
-│   │   ├── internal_users.yml       # Indexer user configuration
-│   │   └── config.yml               # Indexer settings
-│   └── 📁 wazuh_dashboard/
-│       ├── wazuh.yml                # Dashboard configuration
-│       └── opensearch_dashboards.yml # Dashboard settings
-├── 📁 custom_rules/                 # Detection engineering
-│   └── local_rules.xml              # Custom security rules
-├── 📁 scripts/                      # Helper scripts
-│   └── attack_simulation.sh         # Attack simulation script
-└── 📁 screenshots/                  # Evidence for documentation
-    └── active_response_alert.png    # Active response screenshot
-    
 ### Installation
 ```bash
 # Clone the repository
 git clone https://github.com/AljawharaK/SIEM_Active_Defense_Lab.git
 cd SIEM_Active_Defense_Lab
 
+# You need to edit config.yml with Your-Host-IP
 # Generate SSL certificates for secure communication
 docker compose -f generate-indexer-certs.yml run --rm generator
 
@@ -144,5 +126,5 @@ docker compose ps
 | Attack Type | Method |
 |:-------:|:-----------:|
 | Shellshock | () { :;}; /bin/bash -c 'echo vulnerable' |
-| Nmap Scan | nmap -sV -p 1-1000 target |
+| Nmap Scan | nmap -sV -p 80,443,1514,1515,55000 target |
 | Curl Exploit | curl -X GET http://target:80 |
