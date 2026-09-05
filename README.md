@@ -75,7 +75,7 @@ graph TB
 - 20 GB available disk space
 
 ### Deployment Guide
-If you prefer a manual deployment of the docker container, use this guide:
+If you prefer a manual deployment, use this guide:
 
 [Deployment_Guide](https://github.com/AljawharaK/SIEM-Threat-Detection-and-Automated-Response-Lab/blob/main/Wazuh_Docker_Keycloak_Guide.md)
 
