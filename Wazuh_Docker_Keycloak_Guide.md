@@ -694,7 +694,7 @@ sudo docker restart single-node-wazuh.dashboard-1
 ## Enroll a Linux Agent
 
 
-In the dashboard, open the menu, then **Agents Management**, **Summary**, then **Deploy new agent**. Choose Linux, copy the commands and run them on the client.
+In the dashboard, open the menu, then **Agents Management** -> **Summary**, then **Deploy new agent**. Choose Linux, copy the commands and run them on the client.
 
 Verify the agent shows **Active** in the dashboard or using command:
 
@@ -707,8 +707,10 @@ sudo docker exec single-node-wazuh.manager-1 /var/ossec/bin/agent_control -l
 On the enrolled Linux host:
 
 ```bash
-sudo ls
-sudo systemctl restart ssh
+# File system access
+sudo cat /etc/shadow
+# Nmap scan
+nmap -sV -p 443, 1514, 1515 <Your_IP>
 ```
 
 In the dashboard, open **Threat Hunting** -> **Events**, filter by your agent and confirm logs arrive.
