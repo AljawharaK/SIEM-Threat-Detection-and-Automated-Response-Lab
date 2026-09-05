@@ -2,7 +2,7 @@
 
 This guide documents the complete setup of Wazuh 4.14.7 on Docker with Keycloak Single Sign-On (SSO) integration and UFW firewall configuration. I had sevral issues with configuring Keycloak and UFW since I'm using Doker, and I'd want to show you how I fixed them.
 
-[Threat Detection and Monitoring Lab](https://github.com/AljawharaK/SIEM-Threat-Detection-and-Automated-Response-Lab)
+[Threat Detection and Monitoring Lab](https://github.com/AljawharaK/SIEM-Threat-Detection-and-Automated-Response-Lab) | [Official_Keycloak_Guide](https://documentation.wazuh.com/current/user-manual/user-administration/single-sign-on/keycloak.html#setup-keycloak-single-sign-on-with-administrator-role)
 
 ---
 
