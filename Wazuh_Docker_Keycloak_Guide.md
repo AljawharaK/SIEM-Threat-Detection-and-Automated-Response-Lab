@@ -8,7 +8,7 @@ This guide documents the complete setup of Wazuh 4.14.7 on Docker with Keycloak 
 
 ## Prerequisites
 
-*   Ubuntu server with Docker installed
+*   Ubuntu server Virtual Machine
     
 *   Administrative access to the server
     
