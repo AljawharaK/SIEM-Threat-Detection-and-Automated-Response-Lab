@@ -130,6 +130,11 @@ Wazuh monitored the website and logged alerts:
   <img src="screenshots/Wazuh_dashboard_threat_hunting_events.jpeg" width="400" />
   <img src="screenshots/Wazuh_dashboard_MITRE_ATT&CK.jpeg" width="400" />
   <img src="screenshots/Wazuh_dashboard_vuln.jpeg" width="400" />
+</p> 
+
+Active Response enforces firewall rules automatically:
+
+<p align="center">
   <img src="screenshots/Wazuh_dashboard_active_response.jpeg" width="400" />
 </p> 
 
