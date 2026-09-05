@@ -148,11 +148,6 @@ admin:
   backend_roles:
   - "admin"
   description: "Demo admin user"
-
-kibanaserver:
-  hash: "<Your_Pass_Hash>"
-  reserved: true
-  description: "Demo kibanaserver user"
 ``` 
 
 ### 4\. Update Environment Variables
