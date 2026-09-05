@@ -9,7 +9,7 @@
 
 ### *Threat Detection & Automated Defense*
 
-[Tools](#tools) • [Quick Start](#quick-start) • [Homelab Architecture](#homelab-architecture) • [Attack Simulation](#attack-simulation) • [Wazuh SIEM Dashboard](#wazuh-siem-dashboard)
+[Tools](#tools) • [Quick Start](#quick-start) • [Homelab Architecture](#homelab-architecture) • [Attack Simulation](#attack-simulation) • [Wazuh SIEM Dashboard](#wazuh-siem-dashboard) | [Deployment_Guide](https://github.com/AljawharaK/SIEM-Threat-Detection-and-Automated-Response-Lab/blob/main/Wazuh_Docker_Keycloak_Guide.md)
 
 ---
 
@@ -73,6 +73,13 @@ graph TB
 - Docker Compose v2
 - 8 GB RAM minimum for this lab configuration
 - 20 GB available disk space
+
+### Deployment Guide
+If you prefer a manual deployment of the docker container, use this guide:
+
+[Deployment_Guide](https://github.com/AljawharaK/SIEM-Threat-Detection-and-Automated-Response-Lab/blob/main/Wazuh_Docker_Keycloak_Guide.md)
+
+The guide provides step-by-step instructions for configuring Wazuh with Keycloak SSO integration and UFW firewall rules.
 
 ### Installation
 ```bash
