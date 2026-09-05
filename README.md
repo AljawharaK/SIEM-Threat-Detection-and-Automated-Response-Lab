@@ -103,8 +103,8 @@ docker compose ps
 ### Access Services
 | Service | URL | Credentials |
 |:-------:|:-----------:|:-----------:|
-| Wazuh Dashboard | https://localhost:443 | Configure in `docker-compose.yml` |
-| Keycloak | http://localhost:8081 | Configure in `docker-compose.yml` |
+| Wazuh Dashboard | https://localhost:443 | admin / SecretPassword |
+| Keycloak | http://localhost:8081 | admin / SecretPassword |
 
 ---
 
