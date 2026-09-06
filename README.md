@@ -85,7 +85,7 @@ The guide provides step-by-step instructions for configuring Wazuh with Keycloak
 ```bash
 # Clone the repository
 git clone https://github.com/AljawharaK/SIEM-Threat-Detection-and-Automated-Response-Lab.git
-cd SIEM_Active_Defense_Lab
+cd SIEM_Threat_Detection_and_Automated_Response_Lab
 
 # Review the Wazuh certificate configuration
 # Update config/certs.yml if your environment requires custom hostnames/IPs
